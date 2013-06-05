@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Inicio
+{% endblock %}
+
+{% block content %}
+	<header>
+		<div class="container">
+			<div class="row">
+				<section class='span8'>
+					<h1>IESO</h1><br>
+					<p> 
+						Sistema de Gestión de los Alumnos del IESO 
+					</p>
+				</section>
+				<section class='span4'>
+					
+				</section>
+			</div>
+		</div>
+	</header>
+
+	<section id='main' class='container'>
+		
+		<div class='row'>
+			<section class="span4" id='listAlumnos'>
+				{% if alumnos %}
+					<ul class='nav nav-tabs nav-stacked'>
+						<li class='nav-header'>Alumnos</li>
+						{% for alumno in alumnos %}
+							<li>
+								<a href="/alumno/{{alumno.id}}">
+									{{alumno.nombre}} {{alumno.apellidoPat}} {{alumno.apellidoMat}}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				{% else %}
+					<strong> No existen alumnos</strong>
+				{% endif %}
+			</section>
+			<section class="span4" id='listProfesores'>
+				{% if profesores %}
+					<ul class='nav nav-tabs nav-stacked'>
+						<li class='nav-header'>Profesores</li>
+						{% for profesor in profesores %}
+							<li>
+								<a href="/profesor/{{profesor.id}}">
+									{{profesor.nombre}} {{profesor.apellidoPat}} {{profesor.apellidoMat}}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				{% else %}
+					<strong> No existen profesores</strong>
+				{% endif %}
+			</section>
+			<section class="span4" id='listMaterias'>
+				{% if grupos %}
+					<ul class='nav nav-tabs nav-stacked'>
+						<li class='nav-header'>Grupos</li>
+						{% for grupo in grupos %}
+							<li>
+								<a href="/grupo/{{grupo.id}}">
+									{{grupo.nombre}} {{grupo.cuatrimestre}}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				{% else %}
+					<strong> No existen grupos</strong>
+				{% endif %}
+			</section>
+		</div>
+	</section>
+{% endblock %}

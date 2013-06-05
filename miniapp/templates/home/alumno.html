@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Alumno {{ alumno.matricula }} - {{ alumno.nombre }} {{ alumno.apellidoPat }} {{ alumno.apellidoMat }}
+{% endblock %}
+
+{% block content %}
+<section class='container separador' ></section>
+
+<section class='container'>
+	<div class="row">
+		<section class='span6 '>
+			
+			<div class='span6'><h2 class='span5 text-center'> {{ alumno.matricula }} - {{ alumno.nombre }} {{ alumno.apellidoPat }} {{ alumno.apellidoMat }} </h2> <br> 
+				<a href="/editar/alumno/{{alumno.id}}" class='text-center'>Editar</a>
+				<a href="/eliminar/alumno/{{alumno.id}}">Eliminar</a>
+			</div>
+			<br>
+				<div class='span5 text-center'>
+					<h3>{{grupo}}</h3>
+				</div>
+				
+			<br><br>
+			{% for m in materias %}
+				<div class='span6 well'>
+				{{m.nombre}} - {{m.horario}}
+				</div>
+			{% endfor %}
+		</section>
+	</div>
+</section>
+{% endblock %}

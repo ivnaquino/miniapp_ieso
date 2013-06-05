@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	{{titulo}}
+{% endblock %}
+
+{% block script %}
+	<script src='/media/js/forms.js'></script>
+{% endblock %}
+
+{% block content %}
+<section class='container separador' ></section>
+
+<section class='container'>
+	<div class="row">
+		<section class="span6 well">
+			<form action="#" method='POST' id='{{idForm}}'>
+				<legend class='text-center'>{{titulo}}</legend>
+
+				{% csrf_token %}
+				{{ form.as_p }}
+				<input type="submit" value='Enviar' class='btn btn-primary' id='enviar'>
+			</form>
+		</section>
+		
+	</div>
+</section>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Grupo {{grupo.nombre}}
+{% endblock %}
+
+{% block content %}
+<section class='container separador' ></section>
+<section class='container'>
+		<h2 class='text-center'>{{grupo.nombre}} {{grupo.cuatrimestre}} </h2>
+		<p class='text-center'> 
+		<a href="/editar/grupo/{{grupo.id}}">Editar</a>
+		<a href="/eliminar/grupo/{{grupo.id}}">Eliminar</a>
+		</p>
+	<div class="row">
+		<section class='span6 '>
+			<ul class='nav nav-tabs nav-stacked'>
+				<li class='nav-header'>Alumnos</li>
+				{% for alumno in alumnos %}
+					<li><a href='/alumno/{{alumno.id}}'>{{alumno.nombre}} {{alumno.apellidoPat}} {{alumno.apellidoMat}} </a></li>
+				{% endfor %}
+			</ul>
+		</section>
+		
+		<section class="span6">
+			<ul class='nav nav-tabs nav-stacked'>
+				<li class='nav-header'>Materias</li>
+				{% for materia in materias %}
+					<li><a data-toggle="modal" href="#modalMateria{{materia.id}}"> {{materia}} </a></li>
+				{% endfor %}
+			</ul>
+		</section>
+	</div>
+	
+</section>
+
+				{% for materia in materias %}
+<div class="modal hide fade" id="modalMateria{{materia.id}}">
+	<div class="modal-header">
+		<a class="close" data-dismiss="modal">&times;</a>
+		<h3>{{materia}}</h3>
+	</div>
+	<div class="modal-body">
+		<p> {{materia.horario}} </p>
+	</div>
+	<div class="modal-footer">
+		<a href="/editar/materia/{{materia.id}}" class='btn btn-success'>Editar</a>
+		<a href="/eliminar/materia/{{materia.id}}" class="btn btn-danger">Eliminar</a>
+		<a href="#" class="btn btn-inverse" data-dismiss="modal">Cerrar</a>
+	</div>
+</div>
+					
+				{% endfor %}
+
+{% endblock %}
+
+<a class="btn" data-toggle="modal" href="#myModal">Launch Modal</a>
+<div class="modal" id="myModal">
+	<div class="modal-header">
+		<a class="close" data-dismiss="modal">&times;</a>
+		<h3>Modal header</h3>
+	</div>
+	<div class="modal-body">
+		<p>One fine body…</p>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn btn-primary">Save changes</a>
+		<a href="#" class="btn">Close</a>
+	</div>
+</div>

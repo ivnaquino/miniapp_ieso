@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Profesor - {{ profesor.nombre }} {{ profesor.apellidoPat }} {{ profesor.apellidoMat }}
+{% endblock %}
+
+{% block content %}
+<section class='container separador' ></section>
+<section class='container'>
+	<section class='span6 '>
+		
+		<div class='text-center span6'><h2 class='text-center'> {{ profesor.matricula }} - {{ profesor.nombre }} {{ profesor.apellidoPat }} {{ profesor.apellidoMat }} </h2> 
+			<a href="/editar/profesor/{{profesor.id}}">Editar</a>
+			<a href="/eliminar/profesor/{{profesor.id}}">Eliminar</a>
+		</div>
+
+		<div class='span6'></div><br><br>
+
+		{% if grupos %}
+			{% for grupo in grupos %}
+				<section id="grupos" class='span6'>
+					<article class="well well-small">
+						<a href='/grupo/{{grupo.id}}'>{{grupo.nombre}} {{grupo.cuatrimestre}}</a>
+					</article>
+				</section>
+			{% endfor%}
+		{% else %}
+				<section id="grupos">
+					<strong> Grupos sin asignar</strong>
+				</section>
+		{% endif %}
+		
+	</section>
+	
+</section>
+{% endblock %}
